@@ -8,8 +8,10 @@
 package org.usfirst.frc.team7242.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,7 +28,8 @@ public class Robot extends IterativeRobot {
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
 	
-	Joystick driver = new Joystick();
+	Joystick driverStick = new Joystick(0);
+	XboxController xboxdriver = new XboxController(1); //xbox controller in port 1
 	
 	Spark leftFront = new Spark(0);
 	Spark rightFront = new Spark(1);
@@ -85,11 +88,21 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		
+		//if using joystick
+		double leftStickValue = driverStick.getRawAxis(1);
+		double rightStickValue = driverStick.getRawAxis(3);
+		
+		//if using xbox, idk how to map xbox
+	//	double leftStickvalue = xboxdriver.getX();
+	//	double rightStickvalue = xboxdriver.getY();
+		
+		
+		
 		// runs motors at speed
-		leftFront.set(0.2);
-		leftBack.set(0.2);
-		rightFront.set(-0.2);
-		rightBack.set(-0.2);
+		leftFront.set(leftStickValue);
+		leftBack.set(leftStickValue);
+		rightFront.set(rightStickValue);
+		rightBack.set(rightStickValue);
 	}
 
 	/**
