@@ -64,6 +64,8 @@ public class Robot extends IterativeRobot {
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + m_autoSelected);
+		m_timer.reset();
+		m_timer.start();
 	}
 
 	/**
@@ -71,16 +73,16 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		switch (m_autoSelected) {
-			case kCustomAuto:
-				// Put custom auto code here
-				break;
-			case kDefaultAuto:
-			default:
-				// Put default auto code here
-				break;
+		leftFront.set(0.5);
+		rightFront.set(0.5);
+		leftBack.set(0.5);
+		right1Back.set(0.5);
+		if(m_timer.get()<7.0){
+			robot.Drive
+			
 		}
 	}
+		
 
 	/**
 	 * This function is called periodically during operator control.
