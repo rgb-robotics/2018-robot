@@ -36,6 +36,8 @@ public class Robot extends IterativeRobot {
 	Spark leftBack = new Spark(2);
 	Spark rightBack = new Spark(3);
 	
+	Timer time;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -45,6 +47,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
+		timer = new Timer();
 	}
 
 	/**
@@ -78,7 +81,18 @@ public class Robot extends IterativeRobot {
 		leftBack.set(0.5);
 		right1Back.set(0.5);
 		if(m_timer.get()<7.0){
-			robot.Drive
+			leftFront.set(0.5);
+			rightFront.set(0.5);
+			leftBack.set(0.5);
+			right1Back.set(0.5);
+		}else{
+			leftFront.set(0.0);
+			rightFront.set(0.0);
+			leftBack.set(0.0);
+			right1Back.set(0.0);
+			
+		}
+			
 			
 		}
 	}
