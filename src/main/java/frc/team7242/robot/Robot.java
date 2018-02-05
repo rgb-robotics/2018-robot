@@ -5,15 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team7242.robot;
+package frc.team7242.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team7242.robot.subsystem.Drivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,13 +27,13 @@ public class Robot extends IterativeRobot {
 	
 	Joystick driverStick = new Joystick(0);
 	XboxController xboxdriver = new XboxController(1); //xbox controller in port 1
+
+	Drivetrain drivetrain = new Drivetrain();
+
+	double autonomousSpeed = 0.5;
+	double autonomousTime = 7;
 	
-	Spark leftFront = new Spark(0);
-	Spark rightFront = new Spark(1);
-	Spark leftBack = new Spark(2);
-	Spark rightBack = new Spark(3);
-	
-	Timer time;
+	double autonomousStartTime;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -47,7 +44,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
-		timer = new Timer();
+
 	}
 
 	/**
@@ -67,8 +64,9 @@ public class Robot extends IterativeRobot {
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + m_autoSelected);
-		m_timer.reset();
-		m_timer.start();
+
+		autonomousStartTime = Timer.getFPGATimestamp();
+
 	}
 
 	/**
@@ -76,25 +74,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		leftFront.set(0.5);
-		rightFront.set(0.5);
-		leftBack.set(0.5);
-		right1Back.set(0.5);
-		if(m_timer.get()<7.0){
-			leftFront.set(0.5);
-			rightFront.set(0.5);
-			leftBack.set(0.5);
-			right1Back.set(0.5);
+		double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
+		if(deltaTime < autonomousTime){
+			drivetrain.drive(autonomousSpeed, 0.0);
 		}else{
-			leftFront.set(0.0);
-			rightFront.set(0.0);
-			leftBack.set(0.0);
-			right1Back.set(0.0);
-			
+			drivetrain.drive(0.0, 0.0);
 		}
-			
-			
-		}
+
+
+
 	}
 		
 
@@ -105,20 +93,18 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		//if using joystick
-		double leftStickValue = driverStick.getRawAxis(1);
-		double rightStickValue = driverStick.getRawAxis(3);
+
 		
 		//if using xbox, idk how to map xbox
-	//	double leftStickvalue = xboxdriver.getX();
-	//	double rightStickvalue = xboxdriver.getY();
-		
+
+		double throttle = xboxdriver.getY(GenericHID.Hand.kLeft);
+		double turn = xboxdriver.getX(GenericHID.Hand.kRight);
+
+		drivetrain.drive(throttle, turn);
 		
 		
 		// runs motors at speed
-		leftFront.set(leftStickValue);
-		leftBack.set(leftStickValue);
-		rightFront.set(rightStickValue);
-		rightBack.set(rightStickValue);
+
 	}
 
 	/**
