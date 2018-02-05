@@ -7,6 +7,11 @@
 
 package frc.team7242.robot;
 
+-import edu.wpi.first.wpilibj.IterativeRobot;
+-import edu.wpi.first.wpilibj.Joystick;
+-import edu.wpi.first.wpilibj.Spark;
+-import edu.wpi.first.wpilibj.Victor;
+-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,7 +34,12 @@ public class Robot extends IterativeRobot {
 	XboxController xboxdriver = new XboxController(1); //xbox controller in port 1
 
 	Drivetrain drivetrain = new Drivetrain();
-
+	
+	Spark leftFront = new Spark(0);
+	Spark rightFront = new Spark(1);
+	Spark leftBack = new Spark(2);
+	Spark rightBack = new Spark(3);
+	
 	double autonomousSpeed = 0.5;
 	double autonomousTime = 7;
 	
@@ -90,27 +100,25 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control.
 	 */
 	@Override
-	public void teleopPeriodic() {
-		
-		//if using joystick
-
-		
-		//if using xbox, idk how to map xbox
-
-		double throttle = xboxdriver.getY(GenericHID.Hand.kLeft);
-		double turn = xboxdriver.getX(GenericHID.Hand.kRight);
-
-		drivetrain.drive(throttle, turn);
-		
-		
-		// runs motors at speed
-
-	}
-
-	/**
-	 * This function is called periodically during test mode.
-	 */
-	@Override
-	public void testPeriodic() {
-	}
-}
+		public void teleopPeriodic() {
+ 		
+ 		//if using joystick
+-		double leftStickValue = driverStick.getRawAxis(1);
+-		double rightStickValue = driverStick.getRawAxis(3);
++
+ 		
+ 		//if using xbox, idk how to map xbox
+-	//	double leftStickvalue = xboxdriver.getX();
+-	//	double rightStickvalue = xboxdriver.getY();
+-		
+ 		
+ 		
+ 		// runs motors at speed
+-		leftFront.set(leftStickValue);
+-		leftBack.set(leftStickValue);
+-		rightFront.set(rightStickValue);
+-		rightBack.set(rightStickValue);
++
+ 	}
+ 
+ 	/**
