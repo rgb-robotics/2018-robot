@@ -7,11 +7,11 @@
 
 package frc.team7242.robot;
 
--import edu.wpi.first.wpilibj.IterativeRobot;
--import edu.wpi.first.wpilibj.Joystick;
--import edu.wpi.first.wpilibj.Spark;
--import edu.wpi.first.wpilibj.Victor;
--import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -103,22 +103,22 @@ public class Robot extends IterativeRobot {
 		public void teleopPeriodic() {
  		
  		//if using joystick
--		double leftStickValue = driverStick.getRawAxis(1);
--		double rightStickValue = driverStick.getRawAxis(3);
-+
+		double leftStickValue = driverStick.getRawAxis(1);
+		double rightStickValue = driverStick.getRawAxis(3);
+
  		
  		//if using xbox, idk how to map xbox
--	//	double leftStickvalue = xboxdriver.getX();
--	//	double rightStickvalue = xboxdriver.getY();
--		
+	//	double leftStickvalue = xboxdriver.getX();
+	//	double rightStickvalue = xboxdriver.getY();
+		
  		
  		
  		// runs motors at speed
--		leftFront.set(leftStickValue);
--		leftBack.set(leftStickValue);
--		rightFront.set(rightStickValue);
--		rightBack.set(rightStickValue);
-+
+		leftFront.set(leftStickValue);
+		leftBack.set(leftStickValue);
+		rightFront.set(rightStickValue);
+		rightBack.set(rightStickValue);
+
  	}
  
  	/**
