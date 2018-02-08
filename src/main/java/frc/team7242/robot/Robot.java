@@ -7,17 +7,15 @@
 
 package frc.team7242.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team7242.robot.subsystem.Drivetrain;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.CameraServer;
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -30,23 +28,26 @@ public class Robot extends IterativeRobot {
 	private static final String kCustomAuto = "My Auto";
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
-	CameraServer.getInstance().startAutomaticCapture();
-	
+
 	Joystick driverStick = new Joystick(0);
 	XboxController xboxdriver = new XboxController(1); //xbox controller in port 1
 
-	Drivetrain drivetrain = new Drivetrain();
-	
-	Spark leftFront = new Spark(0);
-	Spark rightFront = new Spark(1);
-	Spark leftBack = new Spark(2);
-	Spark rightBack = new Spark(3);
-	
+	//private static Drivetrain drivetrain = new Drivetrain();
+
+	public Spark leftFront = new Spark(0);
+	public Spark rightFront = new Spark(2);
+	public Spark leftBack = new Spark(1);
+	public Spark rightBack = new Spark(3);
+
 	double autonomousSpeed = 0.5;
 	double autonomousTime = 7;
-	
-	double autonomousStartTime;
-	
+
+
+
+
+
+    double autonomousStartTime;
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -56,10 +57,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
-		CameraServer server = CameraServer.getInstance();
-		server.setQuality(50);
-		server.startAutomaticCapture("cam0");
-
+        CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -89,41 +87,53 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
-		if(deltaTime < autonomousTime){
-			drivetrain.drive(autonomousSpeed, 0.0);
-		}else{
-			drivetrain.drive(0.0, 0.0);
-		}
 
-
-
+	double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
+	if(deltaTime < autonomousTime){
+	//drivetrain.drive(autonomousSpeed, 0.0);
+	}else{
+	//drivetrain.drive(0.0, 0.0);
 	}
-		
+
+
+
+    }
+
 
 	/**
 	 * This function is called periodically during operator control.
 	 */
 	@Override
-		public void teleopPeriodic() {
- 		
- 		//if using joystick
-		double leftStickValue = driverStick.getRawAxis(1);
-		double rightStickValue = driverStick.getRawAxis(3);
+	public void teleopPeriodic() {
 
- 		
- 		//if using xbox, idk how to map xbox
-	//	double leftStickvalue = xboxdriver.getX();
-	//	double rightStickvalue = xboxdriver.getY();
-		
- 		
- 		
- 		// runs motors at speed
-		leftFront.set(leftStickValue);
-		leftBack.set(leftStickValue);
-		rightFront.set(rightStickValue);
-		rightBack.set(rightStickValue);
 
- 	}
- 
- 	/**
+		//if using joystick
+		double xvalue = driverStick.getX();
+		double yvalue = driverStick.getY();
+        double boost;
+
+        boolean trigger = driverStick.getRawButton(1);
+          if (trigger){
+            boost = 2.5;
+        }
+        else {
+            boost = 1;
+        }
+
+
+
+		//if using xbox, idk how to map xbox
+		//	double leftStickvalue = xboxdriver.getX();
+		//	double rightStickvalue = xboxdriver.getY();
+
+
+
+		// runs motors at speed
+		leftFront.set((yvalue+xvalue)*(-0.4)*boost);
+        leftBack.set((yvalue+xvalue)*(-0.4)*boost);
+		rightFront.set((yvalue-xvalue)*(0.4)*boost);
+		rightBack.set((yvalue-xvalue)*(0.4)*boost);
+
+	}}
+
+
