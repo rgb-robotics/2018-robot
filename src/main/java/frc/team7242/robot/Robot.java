@@ -8,6 +8,7 @@
 package frc.team7242.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team7242.robot.subsystem.Drivetrain;
@@ -24,17 +25,17 @@ public class Robot extends IterativeRobot {
 	private static final String kCustomAuto = "My Auto";
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
-	
-	Joystick driverStick = new Joystick(0);
-	XboxController xboxdriver = new XboxController(1); //xbox controller in port 1
+
+	XboxController xboxdriver = new XboxController(0); //xbox controller in port 1
 
 	Drivetrain drivetrain = new Drivetrain();
 
-	double autonomousSpeed = 0.5;
+	double autonomousSpeed = -0.5;
 	double autonomousTime = 7;
-	
-	double autonomousStartTime;
-	
+	//double autonomousTime2 = 13;
+
+	//double autonomousStartTime;
+Timer timer;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
+		timer = new Timer();
 
 	}
 
@@ -65,7 +67,8 @@ public class Robot extends IterativeRobot {
 		// defaultAuto);
 		System.out.println("Auto selected: " + m_autoSelected);
 
-		autonomousStartTime = Timer.getFPGATimestamp();
+		timer.reset();
+		timer.start();
 
 	}
 
@@ -74,12 +77,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
+		double deltaTime = timer.get();
 		if(deltaTime < autonomousTime){
-			drivetrain.drive(autonomousSpeed, 0.0);
+			drivetrain.drive(autonomousSpeed, 0.0,  false);
 		}else{
-			drivetrain.drive(0.0, 0.0);
+			drivetrain.drive(0.0, 0.0, false);
 		}
+		//if(deltaTime < autonomousTime2);
+			//drivetrain.drive(autonomousSpeed, );
 
 
 
@@ -91,19 +96,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
-		//if using joystick
-
-		
-		//if using xbox, idk how to map xbox
 
 		double throttle = xboxdriver.getY(GenericHID.Hand.kLeft);
 		double turn = xboxdriver.getX(GenericHID.Hand.kRight);
 
-		drivetrain.drive(throttle, turn);
-		
-		
-		// runs motors at speed
+		drivetrain.drive(throttle, turn, true);
 
 	}
 
