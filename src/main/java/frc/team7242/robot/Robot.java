@@ -7,107 +7,79 @@
 
 package frc.team7242.robot;
 
+import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team7242.robot.subsystem.Drivetrain;
+import edu.wpi.first.wpilibj.Spark;
+import frc.team7242.robot.subsystem.ScalableSpeedControllerGroup;
+import edu.wpi.first.wpilibj.CameraServer;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
+
 public class Robot extends IterativeRobot {
-	private static final String kDefaultAuto = "Default";
-	private static final String kCustomAuto = "My Auto";
-	private String m_autoSelected;
-	private SendableChooser<String> m_chooser = new SendableChooser<>();
+    private static final String kDefaultAuto = "Default";
+    private static final String kCustomAuto = "My Auto";
+    private String m_autoSelected;
+    private SendableChooser<String> m_chooser = new SendableChooser<>();
+    Joystick driverStick = new Joystick(0);
 
-	XboxController xboxdriver = new XboxController(0); //xbox controller in port 1
+    double autonomousTime = 5;
 
-	Drivetrain drivetrain = new Drivetrain();
+    double autonomousStartTime;
 
-	double autonomousSpeed = -0.5;
-	double autonomousTime = 7;
-	//double autonomousTime2 = 13;
+    ScalableSpeedControllerGroup right = new ScalableSpeedControllerGroup(0.75, new Spark(0), new Spark(1));
+    ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(1.0, new Spark(2), new Spark(3));
 
-	//double autonomousStartTime;
-Timer timer;
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
-	@Override
-	public void robotInit() {
-		m_chooser.addDefault("Default Auto", kDefaultAuto);
-		m_chooser.addObject("My Auto", kCustomAuto);
-		SmartDashboard.putData("Auto choices", m_chooser);
-		timer = new Timer();
-
-	}
-
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString line to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional comparisons to
-	 * the switch structure below with additional strings. If using the
-	 * SendableChooser make sure to add them to the chooser code above as well.
-	 */
-	@Override
-	public void autonomousInit() {
-		m_autoSelected = m_chooser.getSelected();
-		// autoSelected = SmartDashboard.getString("Auto Selector",
-		// defaultAuto);
-		System.out.println("Auto selected: " + m_autoSelected);
-
-		timer.reset();
-		timer.start();
-
-	}
-
-	/**
-	 * This function is called periodically during autonomous.
-	 */
-	@Override
-	public void autonomousPeriodic() {
-		double deltaTime = timer.get();
-		if(deltaTime < autonomousTime){
-			drivetrain.drive(autonomousSpeed, 0.0,  false);
-		}else{
-			drivetrain.drive(0.0, 0.0, false);
-		}
-		//if(deltaTime < autonomousTime2);
-			//drivetrain.drive(autonomousSpeed, );
+    DifferentialDrive drive = new DifferentialDrive(left, right);
 
 
+    public void robotInit() {
+        m_chooser.addDefault("Default Auto", kDefaultAuto);
+        m_chooser.addObject("My Auto", kCustomAuto);
+        SmartDashboard.putData("Auto choices", m_chooser);
+        CameraServer.getInstance().startAutomaticCapture();
+        left.setInverted(true);
+        right.setInverted(true);
 
-	}
-		
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
-	@Override
-	public void teleopPeriodic() {
+    }
 
-		double throttle = xboxdriver.getY(GenericHID.Hand.kLeft);
-		double turn = xboxdriver.getX(GenericHID.Hand.kRight);
+    public void autonomousInit() {
+        m_autoSelected = m_chooser.getSelected();
+        System.out.println("Auto selected: " + m_autoSelected);
 
-		drivetrain.drive(throttle, turn, true);
+        autonomousStartTime = Timer.getFPGATimestamp();
 
-	}
+    }
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
-	@Override
-	public void testPeriodic() {
-	}
+    public void autonomousPeriodic() {
+        double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
+        if (deltaTime < autonomousTime) {
+            drive.arcadeDrive(0.5, 0.0);
+        } else {
+            drive.arcadeDrive(0.0, 0.0);
+        }
+
+
+    }
+
+    public void teleopPeriodic() {
+
+        double xvalue = driverStick.getX();
+        double yvalue = driverStick.getY();
+        double boost;
+
+        boolean trigger = driverStick.getRawButton(1);
+        if (trigger) {
+            boost = 2.5;
+        } else {
+            boost = 1;
+        }
+
+        right.set((yvalue + xvalue) * (-0.4) * boost);
+        left.set((yvalue - xvalue) * (0.4) * boost);
+    }
 }
+
+
