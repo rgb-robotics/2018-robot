@@ -69,16 +69,27 @@ public class Robot extends IterativeRobot {
         double xvalue = driverStick.getX();
         double yvalue = driverStick.getY();
         double boost;
+        double braking;
 
         boolean trigger = driverStick.getRawButton(1);
         if (trigger) {
-            boost = 2.5;
+            boost = 2;
         } else {
             boost = 1;
         }
 
-        right.set((yvalue + xvalue) * (-0.4) * boost);
-        left.set((yvalue - xvalue) * (0.4) * boost);
+        boolean brake = driverStick.getRawButton(2);
+        if (brake){
+            braking = 0;
+        }
+        else {
+            braking = 1;
+        }
+
+            double sens = 2.5;
+
+        right.set((yvalue + xvalue/sens) * (0.5) * boost * braking * 1.1);
+        left.set((yvalue - xvalue/sens) * (-0.5) * boost);
     }
 }
 
