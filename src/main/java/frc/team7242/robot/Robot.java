@@ -52,7 +52,6 @@ public class Robot extends IterativeRobot {
     ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(0.72, rightFront, rightBack);
 
 
-
     DifferentialDrive drive = new DifferentialDrive(left, right);
 
 
@@ -112,12 +111,14 @@ public class Robot extends IterativeRobot {
     }else{
         drive.arcadeDrive(0.0, 0.0);
 }
+
+
         }
 
     public void teleopPeriodic() {
 
-        double xvalue = driverStick.getX();
-        double yvalue = driverStick.getY();
+        double xvalue = (driverStick.getX())/2;
+        double yvalue = (driverStick.getY());
         double boost;
         double braking;
 
@@ -136,8 +137,9 @@ public class Robot extends IterativeRobot {
             braking = 1;
         }
 
-        double sens = 2;
-        double threshold = 0.1;
+        double xsens = 0.5;
+        double ysens = 0.8;
+        double threshold = 0;
         double tres;
         if((Math.abs(xvalue)<threshold) &&  (Math.abs(yvalue)<threshold)){
             tres = 0;
@@ -146,8 +148,20 @@ public class Robot extends IterativeRobot {
             tres = 1;
         }
 
+        double xabs = Math.abs(xvalue);
+        double yabs = Math.abs(yvalue);
 
-        right.set((yvalue - xvalue/sens) * (0.5) * boost * braking * 1 * tres);
-        left.set((yvalue + xvalue/sens) * (-0.5) * boost * braking * tres);
+        // x should be a value from -1 to 1, based on the sum of x and y value
+        // -1 is the robot going full speed backwards, and 1 is the robot going full speed ahead
+        //double x = (((yvalue) + xabs) * boost * -1 * braking * tres );
+       double x = ((yvalue + xabs) * 1.2 * boost * braking * -1 * tres);
+
+        // y should be a value from 0 to 1, based on xvalue
+        // -1 is the robot going full speed to the left and 1 is the robot going full speed to the right
+        double r = (xvalue * -1);
+
+        //right.set((yvalue - xvalue/sens) * (0.5) * boost * braking * 1 * tres);
+        //left.set((yvalue + xvalue/sens) * (-0.5) * boost * braking * tres);
+        drive.arcadeDrive(x, r);
     }
 }
