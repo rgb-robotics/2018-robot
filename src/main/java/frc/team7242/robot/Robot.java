@@ -137,6 +137,7 @@ public class Robot extends IterativeRobot {
             braking = 1;
         }
 
+        double sens = 1;
         double xsens = 0.5;
         double ysens = 0.8;
         double threshold = 0;
@@ -152,16 +153,16 @@ public class Robot extends IterativeRobot {
         double yabs = Math.abs(yvalue);
 
         // x should be a value from -1 to 1, based on the sum of x and y value
-        // -1 is the robot going full speed backwards, and 1 is the robot going full speed ahead
+        // -1 is the robot going full speed backwards, and 1 is the robot going full speed ahead/
         //double x = (((yvalue) + xabs) * boost * -1 * braking * tres );
-       double x = ((yvalue + xabs) * 1.2 * boost * braking * -1 * tres);
+      // double x = ((yvalue + xabs) * 1.2 * boost * braking * -1 * tres);
 
         // y should be a value from 0 to 1, based on xvalue
         // -1 is the robot going full speed to the left and 1 is the robot going full speed to the right
-        double r = (xvalue * -1);
+       // double r = (xvalue * -1);
 
-        //right.set((yvalue - xvalue/sens) * (0.5) * boost * braking * 1 * tres);
-        //left.set((yvalue + xvalue/sens) * (-0.5) * boost * braking * tres);
-        drive.arcadeDrive(x, r);
+        double rightMotor =((yvalue + xvalue/sens) * (0.8) * boost * braking * 1 * tres);
+       double leftMotor = ((yvalue - xvalue/sens) * (0.8) * boost * braking * tres);
+        drive.tankDrive(leftMotor, rightMotor);
     }
 }
