@@ -80,10 +80,12 @@ public class Robot extends IterativeRobot {
 
         MatchData.OwnedSide side = MatchData.getOwnedSide(MatchData.GameFeature.SWITCH_NEAR);
         if (side == MatchData.OwnedSide.LEFT) {
+          // OwnedSide LEFT means that the switch NEAREST to our station is on the left
           leftAuto = true;
           rightAuto = false;
         }
         else if (side == MatchData.OwnedSide.RIGHT) {
+          // OwnedSide RIGHT means that the switch NEAREST to our station is on the RIGHT
           rightAuto = true;
           leftAuto = false;
         }
@@ -169,24 +171,19 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+        /* if (deltaTime < autonomousTime) {
+          drive.arcadeDrive(0.80, 0.0);
+        } else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+        drive.arcadeDrive(0.0, 0.0);
+         } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+            drive.arcadeDrive(0.0, -0.56);
+         } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+             drive.arcadeDrive(1, 0.0);
+         } else {
+             drive.arcadeDrive(0.0, 0.0);
+         }
 
-        // if (deltaTime < autonomousTime) {
-        //  drive.arcadeDrive(0.80, 0.0);
-        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
-        //drive.arcadeDrive(0.0, 0.0);
-        // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
-        //    drive.arcadeDrive(0.0, -0.56);
-        // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
-        //     drive.arcadeDrive(1, 0.0);
-        // } else {
-        //     drive.arcadeDrive(0.0, 0.0);
-        // }
-
-        // }
-
-
-
-
+         } */
     } //closing bracket  for autonomous periodic
 
     public void teleopPeriodic() {
