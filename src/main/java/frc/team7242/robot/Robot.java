@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Spark;
 import frc.team7242.robot.subsystem.ScalableSpeedControllerGroup;
 import edu.wpi.first.wpilibj.CameraServer;
+import openrio.powerup.MatchData;
 
 
 public class Robot extends IterativeRobot {
@@ -76,18 +77,20 @@ public class Robot extends IterativeRobot {
         gameData = DriverStation.getInstance().getGameSpecificMessage();
         boolean leftAuto = false; //variuable to see if the first switch from our perspective is on the left side, needed initialization so...
         boolean rightAuto = false; //variuable to see if the first switch from our perspective is on the right side, needed onitialization so...
-        if(gameData.length() > 0)
-        {
-            if(gameData.charAt(0) == 'L') //reads if the first char in the string is a "left"
-            {
-                leftAuto = true; //set the var so that left Auto ois activated, needed in the and statements below
-                rightAuto = false;
-            } else {
-                leftAuto = false;
-                rightAuto = true; //set the var so that rightAuto is activated, needed in the and stateents below
-            }
-        }
 
+        MatchData.OwnedSide side = MatchData.getOwnedSide(MatchData.GameFeature.SWITCH_NEAR);
+        if (side == MatchData.OwnedSide.LEFT) {
+          leftAuto = true;
+          rightAuto = false;
+        }
+        else if (side == MatchData.OwnedSide.RIGHT) {
+          rightAuto = true;
+          leftAuto = false;
+        }
+        else {
+          // This literally shouldn't happen
+          System.out.println("What is going on");
+        }
         boolean leftStarting = driverStick.getRawButtonPressed(8) || driverStick.getRawButtonPressed(7) ;
         boolean mediumStarting = driverStick.getRawButtonPressed(10)|| driverStick.getRawButtonPressed(9) ;
         boolean rightStarting = driverStick.getRawButtonPressed(12)|| driverStick.getRawButtonPressed(11) ;
