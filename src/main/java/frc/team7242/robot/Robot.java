@@ -72,56 +72,58 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         m_autoSelected = m_chooser.getSelected();
         System.out.println("Auto selected: " + m_autoSelected);
+        String gameData;
+        gameData = DriverStation.getInstance().getGameSpecificMessage();
+        boolean leftAuto = false; //variuable to see if the first switch from our perspective is on the left side, needed initialization so...
+        boolean rightAuto = false; //variuable to see if the first switch from our perspective is on the right side, needed onitialization so...
+        if(gameData.length() > 0)
+        {
+            if(gameData.charAt(0) == 'L') //reads if the first char in the string is a "left"
+            {
+                leftAuto = true; //set the var so that left Auto ois activated, needed in the and statements below
+                rightAuto = false;
+            } else {
+                leftAuto = false;
+                rightAuto = true; //set the var so that rightAuto is activated, needed in the and stateents below
+            }
+        }
+
+        boolean leftStarting = driverStick.getRawButtonPressed(8) || driverStick.getRawButtonPressed(7) ;
+        boolean mediumStarting = driverStick.getRawButtonPressed(10)|| driverStick.getRawButtonPressed(9) ;
+        boolean rightStarting = driverStick.getRawButtonPressed(12)|| driverStick.getRawButtonPressed(11) ;
+
+        boolean path7 = leftStarting && leftAuto;
+        boolean path8 = leftStarting && rightAuto;
+        boolean path9 = mediumStarting && leftAuto;
+        boolean path10 = mediumStarting && rightAuto;
+        boolean path11 = rightStarting && leftAuto;
+        boolean path12 = rightStarting && rightAuto;
 
         autonomousStartTime = Timer.getFPGATimestamp();
-
-    }
-
-    public void autonomousPeriodic() {
         double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
-        // if (deltaTime < autonomousTime) {
-        //  drive.arcadeDrive(0.80, 0.0);
-        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
-        //drive.arcadeDrive(0.0, 0.0);
-        // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
-        //    drive.arcadeDrive(0.0, -0.56);
-        // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
-        //     drive.arcadeDrive(1, 0.0);
-        // } else {
-        //     drive.arcadeDrive(0.0, 0.0);
-        // }
 
-        // }
+        if(path7) { //start of program for path 7
+            if (deltaTime < autonomousTime5) {
+                drive.arcadeDrive(1.9, 0.0); //0.56
+            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+                drive.arcadeDrive(0.0, -0.53);
+            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+                drive.arcadeDrive(0.8, 0.0);
+            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                drive.arcadeDrive(0.0, 0.0); //-0.65
+            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+                drive.arcadeDrive(0, 0.0);
+            } else {
+                drive.arcadeDrive(0.0, 0.0);
+            }
 
-boolean path7 = driverStick.getRawButtonPressed(7);
-boolean path8 = driverStick.getRawButtonPressed(8);
-boolean path9 = driverStick.getRawButtonPressed(9);
-boolean path10 = driverStick.getRawButtonPressed(10);
-boolean path11 = driverStick.getRawButtonPressed(11);
-boolean path12 = driverStick.getRawButtonPressed(12);
-
-if(path7) { //start of program for path 7
-    if (deltaTime < autonomousTime5) {
-        drive.arcadeDrive(1.9, 0.0); //0.56
-    } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-        drive.arcadeDrive(0.0, -0.53);
-    } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-        drive.arcadeDrive(0.8, 0.0);
-    } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
-        drive.arcadeDrive(0.0, 0.0); //-0.65
-    } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-        drive.arcadeDrive(0, 0.0);
-    } else {
-        drive.arcadeDrive(0.0, 0.0);
-    }
-
-} //closing bracket for path 7
+        } //closing bracket for path 7
 
         if(path8){ //start of program of path 8
 
@@ -160,6 +162,27 @@ if(path7) { //start of program for path 7
                 drive.arcadeDrive(0.0, 0.0);
             }
         } //closing of path 12
+
+    }
+
+    public void autonomousPeriodic() {
+
+        // if (deltaTime < autonomousTime) {
+        //  drive.arcadeDrive(0.80, 0.0);
+        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+        //drive.arcadeDrive(0.0, 0.0);
+        // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+        //    drive.arcadeDrive(0.0, -0.56);
+        // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+        //     drive.arcadeDrive(1, 0.0);
+        // } else {
+        //     drive.arcadeDrive(0.0, 0.0);
+        // }
+
+        // }
+
+
+
 
     } //closing bracket  for autonomous periodic
 
