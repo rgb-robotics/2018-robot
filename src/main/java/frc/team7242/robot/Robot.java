@@ -92,28 +92,76 @@ public class Robot extends IterativeRobot {
         // }
 
         // }
-        if(deltaTime < autonomousTime5){
-            drive.arcadeDrive(1.9, 0.0); //0.56
-        }else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
-            drive.arcadeDrive(0.0, 0.53);
-        }else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
-            drive.arcadeDrive(0.8, 0.0);
-        }else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
-            drive.arcadeDrive(0.0, 0.0); //-0.65
-        }else if(autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime9 < deltaTime && deltaTime < autonomousTime10){
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime10 < deltaTime && deltaTime < autonomousTime11){
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime11 < deltaTime && deltaTime < autonomousTime12){
-            drive.arcadeDrive(0, 0.0);
-        }else{
-            drive.arcadeDrive(0.0, 0.0);
-        }
 
+boolean path7 = driverStick.getRawButtonPressed(7);
+boolean path8 = driverStick.getRawButtonPressed(8);
+boolean path9 = driverStick.getRawButtonPressed(9);
+boolean path10 = driverStick.getRawButtonPressed(10);
+boolean path11 = driverStick.getRawButtonPressed(11);
+boolean path12 = driverStick.getRawButtonPressed(12);
 
+if(path7) { //start of program for path 7
+    if (deltaTime < autonomousTime5) {
+        drive.arcadeDrive(1.9, 0.0); //0.56
+    } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+        drive.arcadeDrive(0.0, -0.53);
+    } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+        drive.arcadeDrive(0.8, 0.0);
+    } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+        drive.arcadeDrive(0.0, 0.0); //-0.65
+    } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+        drive.arcadeDrive(0.0, 0.0);
+    } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+        drive.arcadeDrive(0.0, 0.0);
+    } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+        drive.arcadeDrive(0.0, 0.0);
+    } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+        drive.arcadeDrive(0, 0.0);
+    } else {
+        drive.arcadeDrive(0.0, 0.0);
     }
+
+} //closing bracket for path 7
+
+        if(path8){ //start of program of path 8
+
+        } //closing of path 8
+
+        if(path9){ //start of program of path 9
+
+        } //closing of path 9
+
+        if(path10){ //start of program of path 10
+
+        } //closing of path 10
+
+        if(path11){ //start of program of path 11
+
+        } //closing of path 11
+
+        if(path12){ //start of program of path 12
+            if (deltaTime < autonomousTime5) {
+                drive.arcadeDrive(1.9, 0.0); //0.56
+            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+                drive.arcadeDrive(0.0, 0.53);
+            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+                drive.arcadeDrive(0.8, 0.0);
+            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                drive.arcadeDrive(0.0, 0.0); //-0.65
+            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+                drive.arcadeDrive(0, 0.0);
+            } else {
+                drive.arcadeDrive(0.0, 0.0);
+            }
+        } //closing of path 12
+
+    } //closing bracket  for autonomous periodic
 
     public void teleopPeriodic() {
 
