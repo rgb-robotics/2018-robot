@@ -93,9 +93,25 @@ public class Robot extends IterativeRobot {
           // This literally shouldn't happen
           System.out.println("What is going on");
         }
-        boolean leftStarting = driverStick.getRawButtonPressed(8) || driverStick.getRawButtonPressed(7) ;
+
+        boolean leftStarting = false;
+        boolean mediumStarting = false;
+        boolean rightStarting = false;
+
+      int station = DriverStation.getInstance().getLocation();
+        if (station == 1) {
+          leftStarting = true;
+        }
+        else if (station == 2) {
+          mediumStarting = true;
+        }
+        else if (station == 3) {
+          rightStarting = true;
+        }
+
+        /* boolean leftStarting = driverStick.getRawButtonPressed(8) || driverStick.getRawButtonPressed(7) ;
         boolean mediumStarting = driverStick.getRawButtonPressed(10)|| driverStick.getRawButtonPressed(9) ;
-        boolean rightStarting = driverStick.getRawButtonPressed(12)|| driverStick.getRawButtonPressed(11) ;
+        boolean rightStarting = driverStick.getRawButtonPressed(12)|| driverStick.getRawButtonPressed(11) ; */
 
         boolean path7 = leftStarting && leftAuto;
         boolean path8 = leftStarting && rightAuto;
