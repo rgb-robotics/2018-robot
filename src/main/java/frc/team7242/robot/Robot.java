@@ -95,7 +95,7 @@ public class Robot extends IterativeRobot {
         if(deltaTime < autonomousTime5){
             drive.arcadeDrive(1.9, 0.0); //0.56
         }else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
-            drive.arcadeDrive(0.0, -0.53);
+            drive.arcadeDrive(0.0, 0.53);
         }else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
             drive.arcadeDrive(0.8, 0.0);
         }else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
