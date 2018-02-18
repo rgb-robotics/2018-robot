@@ -31,9 +31,9 @@ public class Robot extends IterativeRobot {
     // double autonomousTime3 = 5.5;
     // double autonomousTime4 = 6;
 
-    double autonomousTime5 = 1.9;
-    double autonomousTime6 = 3.7;
-    double autonomousTime7 = 4.5;
+    double autonomousTime5 = 2.5;
+    double autonomousTime6 = 3.96;
+    double autonomousTime7 = 4.6;
     double autonomousTime8 = 6;
     double autonomousTime9 = 9;
     double autonomousTime10= 10;
@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
     double autonomousStartTime;
 
     ScalableSpeedControllerGroup right = new ScalableSpeedControllerGroup(0.75, leftFront, leftBack);
-    ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(0.72, rightFront, rightBack);
+    ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(0.71, rightFront, rightBack);
 
 
     DifferentialDrive drive = new DifferentialDrive(left, right);
@@ -93,35 +93,35 @@ public class Robot extends IterativeRobot {
 
         // }
 
-boolean path7 = driverStick.getRawButtonPressed(7);
-boolean path8 = driverStick.getRawButtonPressed(8);
-boolean path9 = driverStick.getRawButtonPressed(9);
-boolean path10 = driverStick.getRawButtonPressed(10);
-boolean path11 = driverStick.getRawButtonPressed(11);
-boolean path12 = driverStick.getRawButtonPressed(12);
+        boolean path7 = true;
+        boolean path8 = driverStick.getRawButtonPressed(8);
+        boolean path9 = driverStick.getRawButtonPressed(9);
+        boolean path10 = driverStick.getRawButtonPressed(10);
+        boolean path11 = driverStick.getRawButtonPressed(11);
+        boolean path12 = driverStick.getRawButtonPressed(12);
 
-if(path7) { //start of program for path 7
-    if (deltaTime < autonomousTime5) {
-        drive.arcadeDrive(1.9, 0.0); //0.56
-    } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-        drive.arcadeDrive(0.0, -0.53);
-    } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-        drive.arcadeDrive(0.8, 0.0);
-    } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
-        drive.arcadeDrive(0.0, 0.0); //-0.65
-    } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
-        drive.arcadeDrive(0.0, 0.0);
-    } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-        drive.arcadeDrive(0, 0.0);
-    } else {
-        drive.arcadeDrive(0.0, 0.0);
-    }
+        if(path7) { //start of program for path 7
+            if (deltaTime < autonomousTime5) {
+                drive.arcadeDrive(0.8, 0.0); //0.56
+            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+                drive.arcadeDrive(0.0, -0.56);
+            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+                drive.arcadeDrive(1, 0.0);
+            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                drive.arcadeDrive(0.0, 0.0); //-0.65
+            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                drive.arcadeDrive(0.0, 0.0);
+            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+                drive.arcadeDrive(0, 0.0);
+            } else {
+                drive.arcadeDrive(0.0, 0.0);
+            }
 
-} //closing bracket for path 7
+        } //closing bracket for path 7
 
         if(path8){ //start of program of path 8
 
@@ -165,7 +165,7 @@ if(path7) { //start of program for path 7
 
     public void teleopPeriodic() {
 
-        double xvalue = (driverStick.getX())/-2;
+        double xvalue = (driverStick.getX())/-4;
         double yvalue = (driverStick.getY())*-1;
         double boost;
         double braking;
