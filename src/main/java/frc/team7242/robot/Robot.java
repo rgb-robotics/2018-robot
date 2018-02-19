@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import openrio.powerup.MatchData;
 
 
+
 public class Robot extends IterativeRobot {
     private static final String kDefaultAuto = "Default";
     private static final String kCustomAuto = "My Auto";
@@ -32,9 +33,9 @@ public class Robot extends IterativeRobot {
     // double autonomousTime3 = 5.5;
     // double autonomousTime4 = 6;
 
-    double autonomousTime5 = 1.9;
-    double autonomousTime6 = 3.7;
-    double autonomousTime7 = 4.5;
+    double autonomousTime5 = 2.5;
+    double autonomousTime6 = 3.96;
+    double autonomousTime7 = 4.6;
     double autonomousTime8 = 6;
     double autonomousTime9 = 9;
     double autonomousTime10= 10;
@@ -50,7 +51,7 @@ public class Robot extends IterativeRobot {
     double autonomousStartTime;
 
     ScalableSpeedControllerGroup right = new ScalableSpeedControllerGroup(0.75, leftFront, leftBack);
-    ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(0.72, rightFront, rightBack);
+    ScalableSpeedControllerGroup left = new ScalableSpeedControllerGroup(0.71, rightFront, rightBack);
 
 
     DifferentialDrive drive = new DifferentialDrive(left, right);
@@ -73,40 +74,38 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         m_autoSelected = m_chooser.getSelected();
         System.out.println("Auto selected: " + m_autoSelected);
-        String gameData;
-        gameData = DriverStation.getInstance().getGameSpecificMessage();
         boolean leftAuto = false; //variuable to see if the first switch from our perspective is on the left side, needed initialization so...
         boolean rightAuto = false; //variuable to see if the first switch from our perspective is on the right side, needed onitialization so...
 
         MatchData.OwnedSide side = MatchData.getOwnedSide(MatchData.GameFeature.SWITCH_NEAR);
         if (side == MatchData.OwnedSide.LEFT) {
-          // OwnedSide LEFT means that the switch NEAREST to our station is on the left
-          leftAuto = true;
-          rightAuto = false;
+            // OwnedSide LEFT means that the switch NEAREST to our station is on the left
+            leftAuto = true;
+            rightAuto = false;
         }
         else if (side == MatchData.OwnedSide.RIGHT) {
-          // OwnedSide RIGHT means that the switch NEAREST to our station is on the RIGHT
-          rightAuto = true;
-          leftAuto = false;
+            // OwnedSide RIGHT means that the switch NEAREST to our station is on the RIGHT
+            rightAuto = true;
+            leftAuto = false;
         }
         else {
-          // This literally shouldn't happen
-          System.out.println("What is going on");
+            // This literally shouldn't happen
+            System.out.println("What is going on");
         }
 
         boolean leftStarting = false;
         boolean mediumStarting = false;
         boolean rightStarting = false;
 
-      int station = DriverStation.getInstance().getLocation();
+        int station = DriverStation.getInstance().getLocation();
         if (station == 1) {
-          leftStarting = true;
+            leftStarting = true;
         }
         else if (station == 2) {
-          mediumStarting = true;
+            mediumStarting = true;
         }
         else if (station == 3) {
-          rightStarting = true;
+            rightStarting = true;
         }
 
         /* boolean leftStarting = driverStick.getRawButtonPressed(8) || driverStick.getRawButtonPressed(7) ;
@@ -121,15 +120,39 @@ public class Robot extends IterativeRobot {
         boolean path12 = rightStarting && rightAuto;
 
         autonomousStartTime = Timer.getFPGATimestamp();
+
+    }
+
+    public void autonomousPeriodic() {
         double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
+        // if (deltaTime < autonomousTime) {
+        //  drive.arcadeDrive(0.80, 0.0);
+        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+        //drive.arcadeDrive(0.0, 0.0);
+        // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+        //    drive.arcadeDrive(0.0, -0.56);
+        // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+        //     drive.arcadeDrive(1, 0.0);
+        // } else {
+        //     drive.arcadeDrive(0.0, 0.0);
+        // }
+
+        // }
+
+        boolean path7 = true;
+        boolean path8 = driverStick.getRawButtonPressed(8);
+        boolean path9 = driverStick.getRawButtonPressed(9);
+        boolean path10 = driverStick.getRawButtonPressed(10);
+        boolean path11 = driverStick.getRawButtonPressed(11);
+        boolean path12 = driverStick.getRawButtonPressed(12);
 
         if(path7) { //start of program for path 7
             if (deltaTime < autonomousTime5) {
-                drive.arcadeDrive(1.9, 0.0); //0.56
+                drive.arcadeDrive(0.8, 0.0); //0.56
             } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                drive.arcadeDrive(0.0, -0.53);
+                drive.arcadeDrive(0.0, -0.56);
             } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-                drive.arcadeDrive(0.8, 0.0);
+                drive.arcadeDrive(1, 0.0);
             } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
             } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
@@ -184,27 +207,11 @@ public class Robot extends IterativeRobot {
             }
         } //closing of path 12
 
-    }
-
-    public void autonomousPeriodic() {
-        /* if (deltaTime < autonomousTime) {
-          drive.arcadeDrive(0.80, 0.0);
-        } else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
-        drive.arcadeDrive(0.0, 0.0);
-         } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
-            drive.arcadeDrive(0.0, -0.56);
-         } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
-             drive.arcadeDrive(1, 0.0);
-         } else {
-             drive.arcadeDrive(0.0, 0.0);
-         }
-
-         } */
     } //closing bracket  for autonomous periodic
 
     public void teleopPeriodic() {
 
-        double xvalue = (driverStick.getX())/-2;
+        double xvalue = (driverStick.getX())/-4;
         double yvalue = (driverStick.getY())*-1;
         double boost;
         double braking;
