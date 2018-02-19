@@ -112,12 +112,12 @@ public class Robot extends IterativeRobot {
         boolean mediumStarting = driverStick.getRawButtonPressed(10)|| driverStick.getRawButtonPressed(9) ;
         boolean rightStarting = driverStick.getRawButtonPressed(12)|| driverStick.getRawButtonPressed(11) ; */
 
-        boolean path7 = leftStarting && leftAuto;
-        boolean path8 = leftStarting && rightAuto;
-        boolean path9 = mediumStarting && leftAuto;
-        boolean path10 = mediumStarting && rightAuto;
-        boolean path11 = rightStarting && leftAuto;
-        boolean path12 = rightStarting && rightAuto;
+        path7 = leftStarting && leftAuto;
+        path8 = leftStarting && rightAuto;
+        path9 = mediumStarting && leftAuto;
+        path10 = mediumStarting && rightAuto;
+        path11 = rightStarting && leftAuto;
+        path12 = rightStarting && rightAuto;
 
         autonomousStartTime = Timer.getFPGATimestamp();
 
@@ -139,12 +139,12 @@ public class Robot extends IterativeRobot {
 
         // }
 
-        boolean path7 = true;
+       /* boolean path7 = true;
         boolean path8 = driverStick.getRawButtonPressed(8);
         boolean path9 = driverStick.getRawButtonPressed(9);
         boolean path10 = driverStick.getRawButtonPressed(10);
         boolean path11 = driverStick.getRawButtonPressed(11);
-        boolean path12 = driverStick.getRawButtonPressed(12);
+        boolean path12 = driverStick.getRawButtonPressed(12); */
 
         if(path7) { //start of program for path 7
             if (deltaTime < autonomousTime5) {
