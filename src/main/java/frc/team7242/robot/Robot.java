@@ -33,14 +33,21 @@ public class Robot extends IterativeRobot {
     // double autonomousTime3 = 5.5;
     // double autonomousTime4 = 6;
 
-    double autonomousTime5 = 2.5;
-    double autonomousTime6 = 3.96;
+    double autonomousTime5 = 2.9;
+    double autonomousTime6 = 4.06;
     double autonomousTime7 = 4.6;
-    double autonomousTime8 = 6;
-    double autonomousTime9 = 9;
-    double autonomousTime10= 10;
-    double autonomousTime11= 11.5;
-    double autonomousTime12= 12;
+    double autonomousTime8 = 12.5;
+    double autonomousTime9 = 13.2;
+    double autonomousTime10= 14.7;
+    double autonomousTime11= 15.3;
+    double autonomousTime12= 15.91;
+
+    boolean path7;
+    boolean path8;
+    boolean path9;
+    boolean path10;
+    boolean path11;
+    boolean path12;
 
 
     public Spark leftFront = new Spark(0);
@@ -139,20 +146,21 @@ public class Robot extends IterativeRobot {
 
         // }
 
-       /* boolean path7 = true;
+       /*
+       boolean path7 = true;
         boolean path8 = driverStick.getRawButtonPressed(8);
         boolean path9 = driverStick.getRawButtonPressed(9);
         boolean path10 = driverStick.getRawButtonPressed(10);
         boolean path11 = driverStick.getRawButtonPressed(11);
-        boolean path12 = driverStick.getRawButtonPressed(12); */
-
+        boolean path12 = driverStick.getRawButtonPressed(12);
+*/
         if(path7) { //start of program for path 7
             if (deltaTime < autonomousTime5) {
                 drive.arcadeDrive(0.8, 0.0); //0.56
             } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
                 drive.arcadeDrive(0.0, -0.56);
             } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-                drive.arcadeDrive(1, 0.0);
+                drive.arcadeDrive(2, 0.0);
             } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
             } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
@@ -170,7 +178,25 @@ public class Robot extends IterativeRobot {
         } //closing bracket for path 7
 
         if(path8){ //start of program of path 8
-
+            if (deltaTime < autonomousTime5) {
+                drive.arcadeDrive(0.6, 0.0); //0.56
+            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+                drive.arcadeDrive(0.0, -0.62);
+            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+                drive.arcadeDrive(0, 0.0);
+            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                drive.arcadeDrive(0.7, 0.0); //-0.65
+            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                drive.arcadeDrive(0.0, 0.61);
+            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                drive.arcadeDrive(0.72, 0.0);
+            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                drive.arcadeDrive(0.0, 0.62);
+            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+                drive.arcadeDrive(2, 0.0);
+            } else {
+                drive.arcadeDrive(0.0, 0.0);
+            }
         } //closing of path 8
 
         if(path9){ //start of program of path 9
@@ -187,11 +213,11 @@ public class Robot extends IterativeRobot {
 
         if(path12){ //start of program of path 12
             if (deltaTime < autonomousTime5) {
-                drive.arcadeDrive(1.9, 0.0); //0.56
+                drive.arcadeDrive(0.8, 0.0); //0.56
             } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                drive.arcadeDrive(0.0, 0.53);
+                drive.arcadeDrive(0.0, 0.56);
             } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-                drive.arcadeDrive(0.8, 0.0);
+                drive.arcadeDrive(2, 0.0);
             } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
             } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
