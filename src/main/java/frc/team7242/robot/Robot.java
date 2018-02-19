@@ -208,7 +208,25 @@ public class Robot extends IterativeRobot {
         } //closing of path 10
 
         if(path11){ //start of program of path 11
-
+            if (deltaTime < autonomousTime5) {
+                drive.arcadeDrive(0.6, 0.0); //0.56
+            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+                drive.arcadeDrive(0.0, 0.62);
+            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+                drive.arcadeDrive(0, 0.0);
+            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                drive.arcadeDrive(0.7, 0.0); //-0.65
+            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                drive.arcadeDrive(0.0, -0.61);
+            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                drive.arcadeDrive(0.72, 0.0);
+            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                drive.arcadeDrive(0.0, -0.62);
+            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+                drive.arcadeDrive(2, 0.0);
+            } else {
+                drive.arcadeDrive(0.0, 0.0);
+            }
         } //closing of path 11
 
         if(path12){ //start of program of path 12
