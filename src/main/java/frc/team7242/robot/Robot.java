@@ -35,12 +35,12 @@ public class Robot extends IterativeRobot {
 
     double autonomousTime5 = 2.9;
     double autonomousTime6 = 4.06;
-    double autonomousTime7 = 4.6;
-    double autonomousTime8 = 12.5;
-    double autonomousTime9 = 13.2;
-    double autonomousTime10= 14.7;
-    double autonomousTime11= 15.3;
-    double autonomousTime12= 15.91;
+    double autonomousTime7 = 4.55;
+    double autonomousTime8 = 11.5;
+    double autonomousTime9 = 12.3;
+    double autonomousTime10= 14.5;
+    double autonomousTime11= 15.2;
+    double autonomousTime12= 15.7;
 
     boolean path7;
     boolean path8;
@@ -179,21 +179,28 @@ public class Robot extends IterativeRobot {
 
         if(path8){ //start of program of path 8
             if (deltaTime < autonomousTime5) {
+                // Forward
                 drive.arcadeDrive(0.6, 0.0); //0.56
             } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                drive.arcadeDrive(0.0, -0.62);
+                // Turn right
+                drive.arcadeDrive(0.0, -0.61);
             } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
                 drive.arcadeDrive(0, 0.0);
             } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+                // Forward
                 drive.arcadeDrive(0.7, 0.0); //-0.65
             } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+                // Turn left
                 drive.arcadeDrive(0.0, 0.61);
             } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+                // Forward
                 drive.arcadeDrive(0.72, 0.0);
             } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+                // Turn left
                 drive.arcadeDrive(0.0, 0.62);
             } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-                drive.arcadeDrive(2, 0.0);
+                // Ram the switch
+                drive.arcadeDrive(0.7, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
