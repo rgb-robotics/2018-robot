@@ -33,14 +33,32 @@ public class Robot extends IterativeRobot {
     // double autonomousTime3 = 5.5;
     // double autonomousTime4 = 6;
 
-    double autonomousTime5 = 2.9;
-    double autonomousTime6 = 4.06;
-    double autonomousTime7 = 4.55;
-    double autonomousTime8 = 11.5;
-    double autonomousTime9 = 12.3;
-    double autonomousTime10= 14.5;
-    double autonomousTime11= 15.2;
-    double autonomousTime12= 15.7;
+    double autonomousTime5A = 2.9;
+    double autonomousTime6A = 4.06;
+    double autonomousTime7A = 4.6;
+    double autonomousTime8A = 12.5;
+    double autonomousTime9A = 13.2;
+    double autonomousTime10A= 14.7;
+    double autonomousTime11A= 15.37;
+    double autonomousTime12A= 15.99;
+
+    double autonomousTime5B = 2.9;
+    double autonomousTime6B = 4.06;
+    double autonomousTime7B = 4.6;
+    double autonomousTime8B = 12.5;
+    double autonomousTime9B = 13.2;
+    double autonomousTime10B= 14.7;
+    double autonomousTime11B= 15.37;
+    double autonomousTime12B= 15.99;
+
+    double autonomousTime5C = 2.9;
+    double autonomousTime6C = 4.06;
+    double autonomousTime7C = 4.6;
+    double autonomousTime8C = 12.5;
+    double autonomousTime9C = 13.2;
+    double autonomousTime10C = 14.7;
+    double autonomousTime11C = 15.37;
+    double autonomousTime12C = 15.99;
 
     boolean path7;
     boolean path8;
@@ -155,21 +173,21 @@ public class Robot extends IterativeRobot {
         boolean path12 = driverStick.getRawButtonPressed(12);
 */
         if(path7) { //start of program for path 7
-            if (deltaTime < autonomousTime5) {
+            if (deltaTime < autonomousTime5A) {
                 drive.arcadeDrive(0.8, 0.0); //0.56
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+            } else if (autonomousTime5A < deltaTime && deltaTime < autonomousTime6A) {
                 drive.arcadeDrive(0.0, -0.56);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+            } else if (autonomousTime6A < deltaTime && deltaTime < autonomousTime7A) {
                 drive.arcadeDrive(2, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+            } else if (autonomousTime7A < deltaTime && deltaTime < autonomousTime8A) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+            } else if (autonomousTime8A < deltaTime && deltaTime < autonomousTime9A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+            } else if (autonomousTime9A < deltaTime && deltaTime < autonomousTime10A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+            } else if (autonomousTime10A < deltaTime && deltaTime < autonomousTime11A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+            } else if (autonomousTime11A < deltaTime && deltaTime < autonomousTime12A) {
                 drive.arcadeDrive(0, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
@@ -178,29 +196,22 @@ public class Robot extends IterativeRobot {
         } //closing bracket for path 7
 
         if(path8){ //start of program of path 8
-            if (deltaTime < autonomousTime5) {
-                // Forward
+            if (deltaTime < autonomousTime5B) {
                 drive.arcadeDrive(0.6, 0.0); //0.56
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                // Turn right
-                drive.arcadeDrive(0.0, -0.61);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+            } else if (autonomousTime5B < deltaTime && deltaTime < autonomousTime6B) {
+                drive.arcadeDrive(0.0, -0.62);
+            } else if (autonomousTime6B < deltaTime && deltaTime < autonomousTime7B) {
                 drive.arcadeDrive(0, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
-                // Forward
+            } else if (autonomousTime7B < deltaTime && deltaTime < autonomousTime8B) {
                 drive.arcadeDrive(0.7, 0.0); //-0.65
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-                // Turn left
-                drive.arcadeDrive(0.0, 0.61);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
-                // Forward
-                drive.arcadeDrive(0.72, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
-                // Turn left
-                drive.arcadeDrive(0.0, 0.62);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-                // Ram the switch
-                drive.arcadeDrive(0.7, 0.0);
+            } else if (autonomousTime8B < deltaTime && deltaTime < autonomousTime9B) {
+                drive.arcadeDrive(0.0, 0.65);
+            } else if (autonomousTime9B < deltaTime && deltaTime < autonomousTime10B) {
+                drive.arcadeDrive(0.8, 0.0);
+            } else if (autonomousTime10B < deltaTime && deltaTime < autonomousTime11B) {
+                drive.arcadeDrive(0.0, 0.67);
+            } else if (autonomousTime11B < deltaTime && deltaTime < autonomousTime12B) {
+                drive.arcadeDrive(2, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
@@ -208,68 +219,28 @@ public class Robot extends IterativeRobot {
 
         if(path9){ //start of program of path 9
 
-            if (deltaTime < autonomousTime5) {
-                drive.arcadeDrive(0.6, 0.0); //0.56
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                drive.arcadeDrive(0.0, 0.56);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-                drive.arcadeDrive(0, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
-                drive.arcadeDrive(0.36, 0.0); //-0.65
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-                drive.arcadeDrive(0.0, -0.7);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
-                drive.arcadeDrive(0.79, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
-                drive.arcadeDrive(0.0, -0.71);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-                drive.arcadeDrive(3, 0.0);
-            } else {
-                drive.arcadeDrive(0.0, 0.0);
-            }
-        	
         } //closing of path 9
 
         if(path10){ //start of program of path 10
 
-            if (deltaTime < autonomousTime5) {
-                drive.arcadeDrive(0.6, 0.0); 
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
-                drive.arcadeDrive(0.0, -0.62);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
-                drive.arcadeDrive(0, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
-                drive.arcadeDrive(0.36, 0.0); 
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-                drive.arcadeDrive(0.0, 0.61);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
-                drive.arcadeDrive(0.72, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
-                drive.arcadeDrive(0.0, 0.62);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
-                drive.arcadeDrive(2, 0.0);
-            } else {
-                drive.arcadeDrive(0.0, 0.0);
-            }
-        	
         } //closing of path 10
 
         if(path11){ //start of program of path 11
-            if (deltaTime < autonomousTime5) {
+            if (deltaTime < autonomousTime5B) {
                 drive.arcadeDrive(0.6, 0.0); //0.56
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+            } else if (autonomousTime5B < deltaTime && deltaTime < autonomousTime6B) {
                 drive.arcadeDrive(0.0, 0.56);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+            } else if (autonomousTime6B < deltaTime && deltaTime < autonomousTime7B) {
                 drive.arcadeDrive(0, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+            } else if (autonomousTime7B < deltaTime && deltaTime < autonomousTime8B) {
                 drive.arcadeDrive(0.7, 0.0); //-0.65
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+            } else if (autonomousTime8B < deltaTime && deltaTime < autonomousTime9B) {
                 drive.arcadeDrive(0.0, -0.7);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+            } else if (autonomousTime9B < deltaTime && deltaTime < autonomousTime10B) {
                 drive.arcadeDrive(0.79, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+            } else if (autonomousTime10B < deltaTime && deltaTime < autonomousTime11B) {
                 drive.arcadeDrive(0.0, -0.71);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+            } else if (autonomousTime11B < deltaTime && deltaTime < autonomousTime12B) {
                 drive.arcadeDrive(3, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
@@ -277,21 +248,21 @@ public class Robot extends IterativeRobot {
         } //closing of path 11
 
         if(path12){ //start of program of path 12
-            if (deltaTime < autonomousTime5) {
+            if (deltaTime < autonomousTime5A) {
                 drive.arcadeDrive(0.8, 0.0); //0.56
-            } else if (autonomousTime5 < deltaTime && deltaTime < autonomousTime6) {
+            } else if (autonomousTime5A < deltaTime && deltaTime < autonomousTime6A) {
                 drive.arcadeDrive(0.0, 0.56);
-            } else if (autonomousTime6 < deltaTime && deltaTime < autonomousTime7) {
+            } else if (autonomousTime6A < deltaTime && deltaTime < autonomousTime7A) {
                 drive.arcadeDrive(2, 0.0);
-            } else if (autonomousTime7 < deltaTime && deltaTime < autonomousTime8) {
+            } else if (autonomousTime7A < deltaTime && deltaTime < autonomousTime8A) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
-            } else if (autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+            } else if (autonomousTime8A < deltaTime && deltaTime < autonomousTime9A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime9 < deltaTime && deltaTime < autonomousTime10) {
+            } else if (autonomousTime9A < deltaTime && deltaTime < autonomousTime10A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime10 < deltaTime && deltaTime < autonomousTime11) {
+            } else if (autonomousTime10A < deltaTime && deltaTime < autonomousTime11A) {
                 drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime11 < deltaTime && deltaTime < autonomousTime12) {
+            } else if (autonomousTime11A < deltaTime && deltaTime < autonomousTime12A) {
                 drive.arcadeDrive(0, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
@@ -346,7 +317,7 @@ public class Robot extends IterativeRobot {
         // -1 is the robot going full speed to the left and 1 is the robot going full speed to the right
         // double r = (xvalue * -1);
 
-        double rightMotor =((yvalue - xvalue/sens) * (0.8) * boost * braking * tres);
+        double rightMotor =((yvalue - xvalue/sens) * (0.8) * boost * braking * 1 * tres);
         double leftMotor = ((yvalue + xvalue/sens) * (0.8) * boost * braking * tres);
         drive.tankDrive(leftMotor, rightMotor);
     }
