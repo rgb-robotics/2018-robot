@@ -33,32 +33,29 @@ public class Robot extends IterativeRobot {
     // double autonomousTime3 = 5.5;
     // double autonomousTime4 = 6;
 
-    double autonomousTime5A = 2.9;
-    double autonomousTime6A = 4.06;
-    double autonomousTime7A = 4.6;
-    double autonomousTime8A = 12.5;
-    double autonomousTime9A = 13.2;
-    double autonomousTime10A= 14.7;
-    double autonomousTime11A= 15.37;
-    double autonomousTime12A= 15.99;
+    double autonomousTime5A = 2.9;  //go forward on to the same level as the switches
+    double autonomousTime6A = 4.06; //turn 90 degs to face the switch
+    double autonomousTime7A = 4.6; //sprint and dump
+    double autonomousTime8A = 4.7; //reedundant
 
-    double autonomousTime5B = 2.9;
-    double autonomousTime6B = 4.06;
-    double autonomousTime7B = 4.6;
-    double autonomousTime8B = 12.5;
-    double autonomousTime9B = 13.2;
-    double autonomousTime10B= 14.7;
-    double autonomousTime11B= 15.37;
-    double autonomousTime12B= 15.99;
 
-    double autonomousTime5C = 2.9;
-    double autonomousTime6C = 4.06;
-    double autonomousTime7C = 4.6;
-    double autonomousTime8C = 12.5;
-    double autonomousTime9C = 13.2;
-    double autonomousTime10C = 14.7;
-    double autonomousTime11C = 15.37;
-    double autonomousTime12C = 15.99;
+    double autonomousTime5B = 1.9;  //advance to a level so as not to bump into the boxes
+    double autonomousTime6B = 3.06;
+    double autonomousTime7B = 3.1; //blank
+    double autonomousTime8B = 11;
+    double autonomousTime9B = 11.7;
+    double autonomousTime10B= 12.8;
+    double autonomousTime11B= 13.4;
+    double autonomousTime12B= 14;
+
+    double autonomousTime5C = 1.9;  //advance to a level so as not to bump into the boxes
+    double autonomousTime6C = 3.06;
+    double autonomousTime7C = 3.1; //blank
+    double autonomousTime8C = 11;
+    double autonomousTime9C = 11.7;
+    double autonomousTime10C= 12.8;
+    double autonomousTime11C= 13.4;
+    double autonomousTime12C= 14;
 
     boolean path7;
     boolean path8;
@@ -181,14 +178,6 @@ public class Robot extends IterativeRobot {
                 drive.arcadeDrive(2, 0.0);
             } else if (autonomousTime7A < deltaTime && deltaTime < autonomousTime8A) {
                 drive.arcadeDrive(0.0, 0.0); //-0.65
-            } else if (autonomousTime8A < deltaTime && deltaTime < autonomousTime9A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime9A < deltaTime && deltaTime < autonomousTime10A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime10A < deltaTime && deltaTime < autonomousTime11A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime11A < deltaTime && deltaTime < autonomousTime12A) {
-                drive.arcadeDrive(0, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
@@ -197,44 +186,43 @@ public class Robot extends IterativeRobot {
 
         if(path8){ //start of program of path 8
             if (deltaTime < autonomousTime5B) {
-                drive.arcadeDrive(0.6, 0.0); //0.56
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime5B < deltaTime && deltaTime < autonomousTime6B) {
-                drive.arcadeDrive(0.0, -0.62);
+                drive.arcadeDrive(0.0, -0.60); //
             } else if (autonomousTime6B < deltaTime && deltaTime < autonomousTime7B) {
-                drive.arcadeDrive(0, 0.0);
+                drive.arcadeDrive(0, 0.0); //
             } else if (autonomousTime7B < deltaTime && deltaTime < autonomousTime8B) {
-                drive.arcadeDrive(0.7, 0.0); //-0.65
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime8B < deltaTime && deltaTime < autonomousTime9B) {
-                drive.arcadeDrive(0.0, 0.65);
+                drive.arcadeDrive(0.0, 0.66); //
             } else if (autonomousTime9B < deltaTime && deltaTime < autonomousTime10B) {
-                drive.arcadeDrive(0.8, 0.0);
+                drive.arcadeDrive(0.9, 0.0); //
             } else if (autonomousTime10B < deltaTime && deltaTime < autonomousTime11B) {
-                drive.arcadeDrive(0.0, 0.67);
+                drive.arcadeDrive(0.0, 0.615); //
             } else if (autonomousTime11B < deltaTime && deltaTime < autonomousTime12B) {
-                drive.arcadeDrive(2, 0.0);
+                drive.arcadeDrive(2, 0.0); //1
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
         } //closing of path 8
 
         if(path9){ //start of program of path 9
-
             if (deltaTime < autonomousTime5C) {
-                drive.arcadeDrive(0.6, 0.0); //0.56
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime5C < deltaTime && deltaTime < autonomousTime6C) {
-                drive.arcadeDrive(0.0, 0.56);
+                drive.arcadeDrive(0.0, 0.56); //
             } else if (autonomousTime6C < deltaTime && deltaTime < autonomousTime7C) {
-                drive.arcadeDrive(0, 0.0);
+                drive.arcadeDrive(0, 0.0); //
             } else if (autonomousTime7C < deltaTime && deltaTime < autonomousTime8C) {
-                drive.arcadeDrive(0.36, 0.0); //-0.65
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime8C < deltaTime && deltaTime < autonomousTime9C) {
-                drive.arcadeDrive(0.0, -0.7);
+                drive.arcadeDrive(0.0, -0.66); //
             } else if (autonomousTime9C < deltaTime && deltaTime < autonomousTime10C) {
-                drive.arcadeDrive(0.79, 0.0);
+                drive.arcadeDrive(0.86, 0.0); //
             } else if (autonomousTime10C < deltaTime && deltaTime < autonomousTime11C) {
-                drive.arcadeDrive(0.0, -0.71);
+                drive.arcadeDrive(0.0, -0.63); //
             } else if (autonomousTime11C < deltaTime && deltaTime < autonomousTime12C) {
-                drive.arcadeDrive(3, 0.0);
+                drive.arcadeDrive(2, 0.0); //1
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
@@ -244,21 +232,21 @@ public class Robot extends IterativeRobot {
         if(path10){ //start of program of path 10
 
             if (deltaTime < autonomousTime5C) {
-                drive.arcadeDrive(0.6, 0.0);
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime5C < deltaTime && deltaTime < autonomousTime6C) {
-                drive.arcadeDrive(0.0, -0.62);
+                drive.arcadeDrive(0.0, -0.60); //
             } else if (autonomousTime6C < deltaTime && deltaTime < autonomousTime7C) {
-                drive.arcadeDrive(0, 0.0);
+                drive.arcadeDrive(0, 0.0); //
             } else if (autonomousTime7C < deltaTime && deltaTime < autonomousTime8C) {
-                drive.arcadeDrive(0.36, 0.0);
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime8C < deltaTime && deltaTime < autonomousTime9C) {
-                drive.arcadeDrive(0.0, 0.61);
+                drive.arcadeDrive(0.0, 0.66); //
             } else if (autonomousTime9C < deltaTime && deltaTime < autonomousTime10C) {
-                drive.arcadeDrive(0.72, 0.0);
+                drive.arcadeDrive(0.9, 0.0); //
             } else if (autonomousTime10C < deltaTime && deltaTime < autonomousTime11C) {
-                drive.arcadeDrive(0.0, 0.62);
+                drive.arcadeDrive(0.0, 0.615); //
             } else if (autonomousTime11C < deltaTime && deltaTime < autonomousTime12C) {
-                drive.arcadeDrive(2, 0.0);
+                drive.arcadeDrive(2, 0.0); //1
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
@@ -267,21 +255,21 @@ public class Robot extends IterativeRobot {
 
         if(path11){ //start of program of path 11
             if (deltaTime < autonomousTime5B) {
-                drive.arcadeDrive(0.6, 0.0); //0.56
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime5B < deltaTime && deltaTime < autonomousTime6B) {
-                drive.arcadeDrive(0.0, 0.56);
+                drive.arcadeDrive(0.0, 0.56); //
             } else if (autonomousTime6B < deltaTime && deltaTime < autonomousTime7B) {
-                drive.arcadeDrive(0, 0.0);
+                drive.arcadeDrive(0, 0.0); //
             } else if (autonomousTime7B < deltaTime && deltaTime < autonomousTime8B) {
-                drive.arcadeDrive(0.7, 0.0); //-0.65
+                drive.arcadeDrive(0.7, 0.0); //
             } else if (autonomousTime8B < deltaTime && deltaTime < autonomousTime9B) {
-                drive.arcadeDrive(0.0, -0.7);
+                drive.arcadeDrive(0.0, -0.66); //
             } else if (autonomousTime9B < deltaTime && deltaTime < autonomousTime10B) {
-                drive.arcadeDrive(0.79, 0.0);
+                drive.arcadeDrive(0.86, 0.0); //
             } else if (autonomousTime10B < deltaTime && deltaTime < autonomousTime11B) {
-                drive.arcadeDrive(0.0, -0.71);
+                drive.arcadeDrive(0.0, -0.63); //
             } else if (autonomousTime11B < deltaTime && deltaTime < autonomousTime12B) {
-                drive.arcadeDrive(3, 0.0);
+                drive.arcadeDrive(2, 0.0); //1
             } else {
                 drive.arcadeDrive(0.0, 0.0);
             }
@@ -295,14 +283,6 @@ public class Robot extends IterativeRobot {
             } else if (autonomousTime6A < deltaTime && deltaTime < autonomousTime7A) {
                 drive.arcadeDrive(2, 0.0);
             } else if (autonomousTime7A < deltaTime && deltaTime < autonomousTime8A) {
-                drive.arcadeDrive(0.0, 0.0); //-0.65
-            } else if (autonomousTime8A < deltaTime && deltaTime < autonomousTime9A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime9A < deltaTime && deltaTime < autonomousTime10A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime10A < deltaTime && deltaTime < autonomousTime11A) {
-                drive.arcadeDrive(0.0, 0.0);
-            } else if (autonomousTime11A < deltaTime && deltaTime < autonomousTime12A) {
                 drive.arcadeDrive(0, 0.0);
             } else {
                 drive.arcadeDrive(0.0, 0.0);
@@ -313,7 +293,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic() {
 
-        double xvalue = (driverStick.getX())/-4;
+        double xvalue = (driverStick.getX())/-3.5;
         double yvalue = (driverStick.getY())*-1;
         double boost;
         double braking;
