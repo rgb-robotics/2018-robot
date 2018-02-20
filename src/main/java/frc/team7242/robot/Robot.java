@@ -51,11 +51,11 @@ public class Robot extends IterativeRobot {
     double autonomousTime5C = 1.9;  //advance to a level so as not to bump into the boxes
     double autonomousTime6C = 3.06;
     double autonomousTime7C = 3.1; //blank
-    double autonomousTime8C = 11;
-    double autonomousTime9C = 11.7;
-    double autonomousTime10C= 12.8;
-    double autonomousTime11C= 13.4;
-    double autonomousTime12C= 14;
+    double autonomousTime8C = 6;
+    double autonomousTime9C = 6.7;
+    double autonomousTime10C= 7.8;
+    double autonomousTime11C= 8.4;
+    double autonomousTime12C= 9;
 
     boolean path7;
     boolean path8;
@@ -218,7 +218,7 @@ public class Robot extends IterativeRobot {
             } else if (autonomousTime8C < deltaTime && deltaTime < autonomousTime9C) {
                 drive.arcadeDrive(0.0, -0.66); //
             } else if (autonomousTime9C < deltaTime && deltaTime < autonomousTime10C) {
-                drive.arcadeDrive(0.86, 0.0); //
+                drive.arcadeDrive(0.81, 0.0); //
             } else if (autonomousTime10C < deltaTime && deltaTime < autonomousTime11C) {
                 drive.arcadeDrive(0.0, -0.63); //
             } else if (autonomousTime11C < deltaTime && deltaTime < autonomousTime12C) {
@@ -255,7 +255,7 @@ public class Robot extends IterativeRobot {
 
         if(path11){ //start of program of path 11
             if (deltaTime < autonomousTime5B) {
-                drive.arcadeDrive(0.7, 0.0); //
+                drive.arcadeDrive(0.7, 0.0); //comment needed oops
             } else if (autonomousTime5B < deltaTime && deltaTime < autonomousTime6B) {
                 drive.arcadeDrive(0.0, 0.56); //
             } else if (autonomousTime6B < deltaTime && deltaTime < autonomousTime7B) {
