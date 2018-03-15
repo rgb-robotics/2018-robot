@@ -25,20 +25,22 @@ public class Robot extends IterativeRobot {
     Joystick driverStick = new Joystick(0);
 
 
+//LEFT and RIGHT
+   // double autonomousTime = 3;
+   //double autonomousTime2 = 4;
+   // double autonomousTime3 = 5.5;
+   // double autonomousTime4 = 6;
 
-    // double autonomousTime = 3;
-    //double autonomousTime2 = 4;
-    // double autonomousTime3 = 5.5;
-    // double autonomousTime4 = 6;
+//MIDDLE(NOT PREPARED TO USE)
+   //double autonomousTime5 = 1.5;
+   //double autonomousTime6 = 2.75;
+   //double autonomousTime7 = 3.75;
+   //double autonomousTime8 = 4.25;
+   //double autonomousTime9 = 7.25;
+   //double autonomousTime10= 8.25;
+   //double autonomousTime11= 9.75;
+   //double autonomousTime12= 10.25;
 
-    double autonomousTime5 = 1.9;
-    double autonomousTime6 = 3.7;
-    double autonomousTime7 = 4.5;
-    double autonomousTime8 = 6;
-    double autonomousTime9 = 9;
-    double autonomousTime10= 10;
-    double autonomousTime11= 11.5;
-    double autonomousTime12= 12;
 
 
     public Spark leftFront = new Spark(0);
@@ -79,41 +81,56 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
         double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
-        // if (deltaTime < autonomousTime) {
-        //  drive.arcadeDrive(0.80, 0.0);
-        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
-        //drive.arcadeDrive(0.0, 0.0);
-        // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
-        //    drive.arcadeDrive(0.0, -0.56);
-        // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
-        //     drive.arcadeDrive(1, 0.0);
-        // } else {
-        //     drive.arcadeDrive(0.0, 0.0);
-        // }
-
-        // }
-        if(deltaTime < autonomousTime5){
-            drive.arcadeDrive(1.9, 0.0); //0.56
-        }else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
-            drive.arcadeDrive(0.0, 0.53);
-        }else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
-            drive.arcadeDrive(0.8, 0.0);
-        }else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
-            drive.arcadeDrive(0.0, 0.0); //-0.65
-        }else if(autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime9 < deltaTime && deltaTime < autonomousTime10){
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime10 < deltaTime && deltaTime < autonomousTime11){
-            drive.arcadeDrive(0.0, 0.0);
-        }else if(autonomousTime11 < deltaTime && deltaTime < autonomousTime12){
-            drive.arcadeDrive(0, 0.0);
-        }else{
-            drive.arcadeDrive(0.0, 0.0);
-        }
-
-
-    }
+   //LEFT SIDE
+        //if(deltaTime < autonomousTime) {
+          //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+          //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+          //drive.arcadeDrive(0.0, -0.56);
+        //}else if(autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+          //drive.arcadeDrive(1, 0.0);
+        //}else{
+          //drive.arcadeDrive(0.0, 0.0);
+            // }
+   // }
+        
+    //RIGHT SIDE
+        //if(deltaTime < autonomousTime) {
+          //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+          //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+          //drive.arcadeDrive(0.0, 0.56);
+        //}else if(autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+          //drive.arcadeDrive(1, 0.0);
+        //}else{
+          //drive.arcadeDrive(0.0, 0.0);
+            // }
+   // }
+   
+   //MIDDLE     
+        //if(deltaTime < autonomousTime5){
+           //drive.arcadeDrive(0.0, 0.56); //0.56
+        //}else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
+            //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
+            //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
+           //drive.arcadeDrive(0.0, -0.56); //-0.65
+        //}else if(autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+           //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime9 < deltaTime && deltaTime < autonomousTime10){
+           //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime10 < deltaTime && deltaTime < autonomousTime11){
+           //drive.arcadeDrive(0.0, -0.56);
+        //}else if(autonomousTime11 < deltaTime && deltaTime < autonomousTime12){
+           //drive.arcadeDrive(1, 0.0);
+        //}else{
+           //drive.arcadeDrive(0.0, 0.0);
+              //}
+   //}
+  
 
     public void teleopPeriodic() {
 
