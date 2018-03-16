@@ -25,20 +25,22 @@ public class Robot extends IterativeRobot {
     Joystick driverStick = new Joystick(0);
 
 
-
+//LEFT and RIGHT
    // double autonomousTime = 3;
-    //double autonomousTime2 = 4;
+   //double autonomousTime2 = 4;
    // double autonomousTime3 = 5.5;
    // double autonomousTime4 = 6;
 
-    double autonomousTime5 = 1.5;
-    double autonomousTime6 = 3.5;
-    double autonomousTime7 = 4.5;
-    double autonomousTime8 = 6;
-    double autonomousTime9 = 9;
-    double autonomousTime10= 10;
-    double autonomousTime11= 11.5;
-    double autonomousTime12= 12;
+//MIDDLE(NOT PREPARED TO USE)
+   //double autonomousTime5 = 1.5;
+   //double autonomousTime6 = 2.75;
+   //double autonomousTime7 = 3.75;
+   //double autonomousTime8 = 4.25;
+   //double autonomousTime9 = 7.25;
+   //double autonomousTime10= 8.25;
+   //double autonomousTime11= 9.75;
+   //double autonomousTime12= 10.25;
+
 
 
     public Spark leftFront = new Spark(0);
@@ -63,10 +65,10 @@ public class Robot extends IterativeRobot {
         left.setInverted(true);
         right.setInverted(true);
 
-       // leftFront.setSafetyEnabled(false);
-       // rightFront.setSafetyEnabled(false);
-       // leftBack.setSafetyEnabled(false);
-       // rightBack.setSafetyEnabled(false);
+        // leftFront.setSafetyEnabled(false);
+        // rightFront.setSafetyEnabled(false);
+        // leftBack.setSafetyEnabled(false);
+        // rightBack.setSafetyEnabled(false);
     }
 
     public void autonomousInit() {
@@ -79,46 +81,61 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
         double deltaTime = Timer.getFPGATimestamp() - autonomousStartTime;
-       // if (deltaTime < autonomousTime) {
-          //  drive.arcadeDrive(0.80, 0.0);
-        //} else if (autonomousTime < deltaTime && deltaTime < autonomousTime2) {
-            //drive.arcadeDrive(0.0, 0.0);
-       // } else if (autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
-        //    drive.arcadeDrive(0.0, -0.56);
-       // } else if (autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
-       //     drive.arcadeDrive(1, 0.0);
-       // } else {
-       //     drive.arcadeDrive(0.0, 0.0);
-       // }
-
+   //LEFT SIDE
+        //if(deltaTime < autonomousTime) {
+          //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+          //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+          //drive.arcadeDrive(0.0, -0.56);
+        //}else if(autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+          //drive.arcadeDrive(1, 0.0);
+        //}else{
+          //drive.arcadeDrive(0.0, 0.0);
+            // }
    // }
-    if(deltaTime < autonomousTime5){
-        drive.arcadeDrive(0.0, 0.56);
-    }else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
-        drive.arcadeDrive(0.8, 0.0);
-    }else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
-        drive.arcadeDrive(0.0, 0.0);
-    }else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
-        drive.arcadeDrive(0.0, -0.65);
-    }else if(autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
-        drive.arcadeDrive(0.8, 0.0);
-     }else if(autonomousTime9 < deltaTime && deltaTime < autonomousTime10){
-        drive.arcadeDrive(0.0, 0.0);
-    }else if(autonomousTime10 < deltaTime && deltaTime < autonomousTime11){
-        drive.arcadeDrive(0.0, -0.56);
-    }else if(autonomousTime11 < deltaTime && deltaTime < autonomousTime12){
-        drive.arcadeDrive(1, 0.0);
-    }else{
-        drive.arcadeDrive(0.0, 0.0);
-}
-
-
-        }
+        
+    //RIGHT SIDE
+        //if(deltaTime < autonomousTime) {
+          //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime < deltaTime && deltaTime < autonomousTime2) {
+          //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime2 < deltaTime && deltaTime < autonomousTime3) {
+          //drive.arcadeDrive(0.0, 0.56);
+        //}else if(autonomousTime3 < deltaTime && deltaTime < autonomousTime4) {
+          //drive.arcadeDrive(1, 0.0);
+        //}else{
+          //drive.arcadeDrive(0.0, 0.0);
+            // }
+   // }
+   
+   //MIDDLE     
+        //if(deltaTime < autonomousTime5){
+           //drive.arcadeDrive(0.0, 0.56); //0.56
+        //}else if(autonomousTime5 < deltaTime && deltaTime < autonomousTime6){
+            //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime6 < deltaTime && deltaTime < autonomousTime7){
+            //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime7 < deltaTime && deltaTime < autonomousTime8){
+           //drive.arcadeDrive(0.0, -0.56); //-0.65
+        //}else if(autonomousTime8 < deltaTime && deltaTime < autonomousTime9) {
+           //drive.arcadeDrive(0.80, 0.0);
+        //}else if(autonomousTime9 < deltaTime && deltaTime < autonomousTime10){
+           //drive.arcadeDrive(0.0, 0.0);
+        //}else if(autonomousTime10 < deltaTime && deltaTime < autonomousTime11){
+           //drive.arcadeDrive(0.0, -0.56);
+        //}else if(autonomousTime11 < deltaTime && deltaTime < autonomousTime12){
+           //drive.arcadeDrive(1, 0.0);
+        //}else{
+           //drive.arcadeDrive(0.0, 0.0);
+              //}
+   //}
+  
 
     public void teleopPeriodic() {
 
-        double xvalue = (driverStick.getX())/2;
-        double yvalue = (driverStick.getY());
+        double xvalue = (driverStick.getX())/-2;
+        double yvalue = (driverStick.getY())*-1;
         double boost;
         double braking;
 
@@ -155,14 +172,14 @@ public class Robot extends IterativeRobot {
         // x should be a value from -1 to 1, based on the sum of x and y value
         // -1 is the robot going full speed backwards, and 1 is the robot going full speed ahead/
         //double x = (((yvalue) + xabs) * boost * -1 * braking * tres );
-      // double x = ((yvalue + xabs) * 1.2 * boost * braking * -1 * tres);
+        // double x = ((yvalue + xabs) * 1.2 * boost * braking * -1 * tres);
 
         // y should be a value from 0 to 1, based on xvalue
         // -1 is the robot going full speed to the left and 1 is the robot going full speed to the right
-       // double r = (xvalue * -1);
+        // double r = (xvalue * -1);
 
-        double rightMotor =((yvalue + xvalue/sens) * (0.8) * boost * braking * 1 * tres);
-       double leftMotor = ((yvalue - xvalue/sens) * (0.8) * boost * braking * tres);
+        double rightMotor =((yvalue - xvalue/sens) * (0.8) * boost * braking * 1 * tres);
+        double leftMotor = ((yvalue + xvalue/sens) * (0.8) * boost * braking * tres);
         drive.tankDrive(leftMotor, rightMotor);
     }
 }
